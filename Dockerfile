@@ -52,7 +52,6 @@ RUN apt-get update && \
     net-tools \
     iproute2 \
     iputils-ping \
-    dante-server \   
     tinyproxy \   
     dbus \
     tzdata \
@@ -156,12 +155,13 @@ RUN mkdir -p /var/log/supervisor
 # Copy supervisor configuration
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 
-# Copy Dante configuration
-COPY danted.conf /etc/danted.conf
-RUN chown ${USERNAME}:${USERNAME} /etc/danted.conf
-
 # Copy Tinyproxy configuration
 COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
+
+# Copy socksserver binary and startup wrapper
+COPY bin/socksserver /usr/local/bin/socksserver
+COPY start_socksserver.sh /usr/local/bin/start_socksserver.sh
+RUN chmod +x /usr/local/bin/socksserver /usr/local/bin/start_socksserver.sh
 
 # Copy VNC startup script and Fluxbox config
 COPY vnc_startup.sh /usr/local/bin/vnc_startup.sh
@@ -171,10 +171,6 @@ COPY fluxbox_keys /home/${USERNAME}/.fluxbox/keys
 COPY fluxbox_menu /home/${USERNAME}/.fluxbox/menu
 RUN chmod +x /usr/local/bin/vnc_startup.sh && \
     chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.fluxbox/*
-
-# Copy Dante wrapper script
-COPY wait_and_start_dante.sh /usr/local/bin/wait_and_start_dante.sh
-RUN chmod +x /usr/local/bin/wait_and_start_dante.sh
 
 # Copy noVNC launch script
 COPY novnc_launch.sh /usr/local/bin/novnc_launch.sh

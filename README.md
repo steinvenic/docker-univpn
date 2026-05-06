@@ -4,7 +4,7 @@
 
 [![Docker Hub](https://img.shields.io/docker/pulls/triatk/univpn.svg)](https://hub.docker.com/r/triatk/univpn) [![Docker Image Size](https://img.shields.io/docker/image-size/triatk/univpn/latest)](https://hub.docker.com/r/triatk/univpn)
 
-This project provides a Docker container for the Huawei UniVPN GUI client (version **10781.18.1.0512**, released on May 12th, 2025), accessible via VNC or a web browser (noVNC). It also includes a SOCKS5 proxy (Dante) and an HTTP proxy (Tinyproxy) to route traffic from host applications through the container's VPN connection.
+This project provides a Docker container for the Huawei UniVPN GUI client (version **10781.18.1.0512**, released on May 12th, 2025), accessible via VNC or a web browser (noVNC). It also includes a SOCKS5 proxy (socksserver) and an HTTP proxy (Tinyproxy) to route traffic from host applications through the container's VPN connection.
 
 **New in this version:** The container includes an intelligent **Keep-Alive system** that can automatically restart the VPN client if the connection drops or the application crashes.
 
@@ -18,7 +18,7 @@ This project provides a Docker container for the Huawei UniVPN GUI client (versi
 | Binary Location | Included in repository: `./bin/univpn-linux-64-10781.18.1.0512.zip` |
 | Base OS         | Ubuntu 22.04 LTS                                                    |
 | Access Method   | VNC (Port 5901), Web Browser via noVNC (Port 6901)                  |
-| Proxy           | SOCKS5 (Dante) on Port 1080, HTTP (Tinyproxy) on Port 8888          |
+| Proxy           | SOCKS5 (socksserver) on Port 1080, HTTP (Tinyproxy) on Port 8888          |
 
 ## Key Features
 
@@ -55,6 +55,10 @@ This project provides a Docker container for the Huawei UniVPN GUI client (versi
     # VPN Credentials (REQUIRED IF USING CLI IMAGE)
     VPN_USERNAME=your_username_here
     VPN_PASSWORD=your_password_here
+
+    # SOCKS5 proxy authentication (required for the local SOCKS proxy)
+    SOCKS_USERNAME=your_socks_username
+    SOCKS_PASSWORD=your_socks_password
 
     # Security & Network
     VNC_PASSWORD=YourStrongVncPassword123
@@ -154,7 +158,7 @@ If the VPN freezes or you need to restart it manually without restarting the who
 
 - The container runs a Fluxbox window manager.
 - **UniVPN GUI** is launched by `/usr/local/bin/univpn-keeper.sh`.
-- **Dante (SOCKS5)** and **Tinyproxy (HTTP)** run in the background via Supervisor.
+- **socksserver (SOCKS5)** and **Tinyproxy (HTTP)** run in the background via Supervisor.
 
 ## Configuration & Persistence
 

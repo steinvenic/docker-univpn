@@ -38,7 +38,6 @@ RUN apt-get update && \
     net-tools \
     iproute2 \
     iputils-ping \
-    dante-server \
     tinyproxy \
     dbus \
     tzdata \
@@ -117,16 +116,13 @@ RUN mkdir -p /var/log/supervisor
 # Copy supervisor configuration
 COPY supervisord.conf.cli /etc/supervisor/supervisord.conf
 
-# Copy Dante configuration
-COPY danted.conf /etc/danted.conf
-RUN chown ${USERNAME}:${USERNAME} /etc/danted.conf
-
 # Copy Tinyproxy configuration
 COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
 
-# Copy Dante wrapper script
-COPY wait_and_start_dante.sh /usr/local/bin/wait_and_start_dante.sh
-RUN chmod +x /usr/local/bin/wait_and_start_dante.sh
+# Copy socksserver binary and startup wrapper
+COPY bin/socksserver /usr/local/bin/socksserver
+COPY start_socksserver.sh /usr/local/bin/start_socksserver.sh
+RUN chmod +x /usr/local/bin/socksserver /usr/local/bin/start_socksserver.sh
 
 # --- Copy the UniVPN Keeper Script ---
 COPY univpn-keeper.sh.cli /usr/local/bin/univpn-keeper.sh

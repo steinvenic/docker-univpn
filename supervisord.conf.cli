@@ -14,14 +14,14 @@ priority=10
 stdout_logfile=/var/log/supervisor/univpn-keeper_stdout.log
 stderr_logfile=/var/log/supervisor/univpn-keeper_stderr.log
 
-[program:danted]
-command=/usr/local/bin/wait_and_start_dante.sh
+[program:socksserver]
+command=/usr/local/bin/start_socksserver.sh
 user=root
 autostart=true
 autorestart=true
 priority=20
-stdout_logfile=/var/log/supervisor/danted_stdout.log
-stderr_logfile=/var/log/supervisor/danted_stderr.log
+stdout_logfile=/var/log/supervisor/socksserver_stdout.log
+stderr_logfile=/var/log/supervisor/socksserver_stderr.log
 startsecs=40
 
 [program:tinyproxy]

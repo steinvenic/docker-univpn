@@ -4,6 +4,10 @@ SPOOF_MAC=00:1A:2B:3C:4D:5E
 # VPN Credentials (REQUIRED FOR CLI IMAGES)
 #VPN_USERNAME=your_username_here
 #VPN_PASSWORD=your_password_here
+
+# SOCKS5 proxy authentication for socksserver
+#SOCKS_USERNAME=your_socks_username
+#SOCKS_PASSWORD=your_socks_password
       
 # Auto-reconnect settings
 #AUTO_RECONNECT=true

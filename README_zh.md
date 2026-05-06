@@ -19,7 +19,7 @@
 | 二进制文件位置 | 包含在仓库中: `./bin/univpn-linux-64-10781.18.1.0512.zip`    |
 | 基础操作系统   | Ubuntu 22.04 LTS                                             |
 | 访问方式       | VNC (端口 5901), Web 浏览器通过 noVNC (端口 6901)            |
-| 代理           | SOCKS5 (Dante) 在端口 1080, **HTTP (Tinyproxy) 在端口 8888** |
+| 代理           | SOCKS5 (socksserver) 在端口 1080, **HTTP (Tinyproxy) 在端口 8888** |
 
 ## 主要特性
 
@@ -55,6 +55,10 @@
     # VPN账号设置 (只有使用CLI镜像时需要)
     VPN_USERNAME=your_username_here
     VPN_PASSWORD=your_password_here
+
+    # SOCKS5 代理认证 (本地 SOCKS 代理所需)
+    SOCKS_USERNAME=your_socks_username
+    SOCKS_PASSWORD=your_socks_password
 
     # 安全与网络设置
     VNC_PASSWORD=YourStrongVncPassword123
@@ -159,7 +163,7 @@ _注意：实际使用时，您可能需要调整 `Dockerfile.cli` 中的 `CMD` 
 
 - 容器运行 Fluxbox 窗口管理器。
 - **UniVPN GUI** 由 `/usr/local/bin/univpn-keeper.sh` 脚本启动。
-- **Dante (SOCKS5)** 和 **Tinyproxy (HTTP)** 通过 Supervisor 在后台运行。
+- **socksserver (SOCKS5)** 和 **Tinyproxy (HTTP)** 通过 Supervisor 在后台运行。
 
 ## 配置与持久化
 

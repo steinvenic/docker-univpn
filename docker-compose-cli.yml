@@ -42,6 +42,8 @@ services:
       # VPN Credentials (REQUIRED)
       - VPN_USERNAME=${VPN_USERNAME}
       - VPN_PASSWORD=${VPN_PASSWORD}
+      - SOCKS_USERNAME=${SOCKS_USERNAME}
+      - SOCKS_PASSWORD=${SOCKS_PASSWORD}
 
       # --- Enable Auto Reconnect ---
       - AUTO_RECONNECT=${AUTO_RECONNECT:-false}

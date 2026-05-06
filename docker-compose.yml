@@ -50,6 +50,10 @@ services:
       # Provides a default password if VNC_PASSWORD is not set.
       - VNC_PW=${VNC_PASSWORD:-univpn} # CHANGE defaultpassword!
 
+      # --- SOCKS5 proxy authentication ---
+      - SOCKS_USERNAME=${SOCKS_USERNAME}
+      - SOCKS_PASSWORD=${SOCKS_PASSWORD}
+
       # --- Enable Auto Reconnect ---
       - AUTO_RECONNECT=${AUTO_RECONNECT:-false}
 
