@@ -75,7 +75,7 @@ jobs:
         with:
           images: |
             triatk/univpn
-            ghcr.io/${{ github.repository_owner }}/univpn
+            ghcr.io/${{ github.repository }}
           # Apply the suffix from the matrix (empty for standard, '-cli' for cli)
           flavor: |
             suffix=${{ matrix.suffix }}
