@@ -56,9 +56,9 @@
     VPN_USERNAME=your_username_here
     VPN_PASSWORD=your_password_here
 
-    # SOCKS5 代理认证 (本地 SOCKS 代理所需)
-    SOCKS_USERNAME=your_socks_username
-    SOCKS_PASSWORD=your_socks_password
+    # SOCKS5 代理认证 (可选，不设置默认使用匿名模式)
+    # SOCKS_USERNAME=your_socks_username
+    # SOCKS_PASSWORD=your_socks_password
 
     # 安全与网络设置
     VNC_PASSWORD=YourStrongVncPassword123

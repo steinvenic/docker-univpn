@@ -5,10 +5,9 @@ INTERFACE="cnem_vnic"
 CHECK_INTERVAL=5
 MAX_CHECKS=60
 
-if [ -z "$SOCKS_USERNAME" ] || [ -z "$SOCKS_PASSWORD" ]; then
-  echo "ERROR: SOCKS_USERNAME and SOCKS_PASSWORD must be set."
-  exit 1
-fi
+# Set default anonymous credentials if not provided
+SOCKS_USERNAME=${SOCKS_USERNAME:-anonymous}
+SOCKS_PASSWORD=${SOCKS_PASSWORD:-anonymous}
 
 echo "[Wrapper] Waiting for interface ${INTERFACE} to appear..."
 COUNT=0

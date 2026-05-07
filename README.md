@@ -56,9 +56,9 @@ This project provides a Docker container for the Huawei UniVPN GUI client (versi
     VPN_USERNAME=your_username_here
     VPN_PASSWORD=your_password_here
 
-    # SOCKS5 proxy authentication (required for the local SOCKS proxy)
-    SOCKS_USERNAME=your_socks_username
-    SOCKS_PASSWORD=your_socks_password
+    # SOCKS5 proxy authentication (optional, defaults to anonymous if not set)
+    # SOCKS_USERNAME=your_socks_username
+    # SOCKS_PASSWORD=your_socks_password
 
     # Security & Network
     VNC_PASSWORD=YourStrongVncPassword123

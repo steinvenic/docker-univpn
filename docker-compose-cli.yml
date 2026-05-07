@@ -42,8 +42,9 @@ services:
       # VPN Credentials (REQUIRED)
       - VPN_USERNAME=${VPN_USERNAME}
       - VPN_PASSWORD=${VPN_PASSWORD}
-      - SOCKS_USERNAME=${SOCKS_USERNAME}
-      - SOCKS_PASSWORD=${SOCKS_PASSWORD}
+      # --- SOCKS5 proxy authentication (optional, defaults to anonymous) ---
+      - SOCKS_USERNAME=${SOCKS_USERNAME:-anonymous}
+      - SOCKS_PASSWORD=${SOCKS_PASSWORD:-anonymous}
 
       # --- Enable Auto Reconnect ---
       - AUTO_RECONNECT=${AUTO_RECONNECT:-false}
