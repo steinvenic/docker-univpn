@@ -62,12 +62,20 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Docker meta
         id: meta_univpn
         uses: docker/metadata-action@v5
         with:
           images: |
             triatk/univpn
+            ghcr.io/${{ github.repository_owner }}/univpn
           # Apply the suffix from the matrix (empty for standard, '-cli' for cli)
           flavor: |
             suffix=${{ matrix.suffix }}
